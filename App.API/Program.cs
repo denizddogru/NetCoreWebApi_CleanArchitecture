@@ -1,7 +1,6 @@
-using App.Repositories;
-using Microsoft.EntityFrameworkCore;
-
+using App.Repositories.Extensions;
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
@@ -14,13 +13,7 @@ builder.Services.AddSwaggerGen();
 
 // EF Core Configuration
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-
-    var connectionStrings = builder.Configuration.GetSection(ConnectionStringOption.Key).Get<ConnectionStringOption>();
-
-    options.UseSqlServer(builder.Configuration.GetConnectionString(connectionStrings!.SqlServer));
-});
+builder.Services.AddRepositories(builder.Configuration);
 
 var app = builder.Build();
 
