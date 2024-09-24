@@ -1,4 +1,5 @@
 using App.Repositories.Extensions;
+using App.Services.Exxtensions;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -13,7 +14,8 @@ builder.Services.AddSwaggerGen();
 
 // EF Core Configuration
 
-builder.Services.AddRepositories(builder.Configuration);
+builder.Services.AddRepositories(builder.Configuration).AddServices(builder.Configuration);
+
 
 var app = builder.Build();
 
