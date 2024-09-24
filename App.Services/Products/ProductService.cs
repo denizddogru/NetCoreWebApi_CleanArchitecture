@@ -12,5 +12,8 @@ namespace App.Services.Products;
 public class ProductService(IProductRepository productRepository) : IProductService
 {
 
-
+    public Task<List<Product>> GetTopPriceOfProdutsAsync(int count)
+    {
+        return productRepository.GetTopPriceOfProductsAsync(count);
+    }
 }

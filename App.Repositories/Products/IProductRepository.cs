@@ -1,5 +1,5 @@
 ﻿namespace App.Repositories.Products;
 public interface IProductRepository : IGenericRepository<Product>
 {
-    public Task<List<Product>> GetTopPriceProductAsync(int count);
+    public Task<List<Product>> GetTopPriceOfProductsAsync(int count);
 }
