@@ -1,4 +1,4 @@
-﻿namespace App.Repositories;
+﻿namespace App.Repositories.Products;
 public record Product
 {
     public int Id { get; set; }
