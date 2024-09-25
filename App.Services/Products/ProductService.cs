@@ -1,4 +1,5 @@
 ﻿using App.Repositories.Products;
+using System.Net;
 
 namespace App.Services.Products;
 
@@ -12,8 +13,25 @@ namespace App.Services.Products;
 public class ProductService(IProductRepository productRepository) : IProductService
 {
 
-    public Task<List<Product>> GetTopPriceOfProdutsAsync(int count)
+    public async Task<ServiceResult<List<Product>>> GetTopPriceOfProductsAsync(int count)
     {
-        return productRepository.GetTopPriceOfProductsAsync(count);
+        var products = await productRepository.GetTopPriceOfProductsAsync(count);
+        return new ServiceResult<List<Product>>()
+        {
+            Data = products
+        };
+      
+    }
+
+    public async Task<ServiceResult<Product>> GetProductByIdAsync(int id)
+    {
+        var product = await productRepository.GetByIdAsync(id);
+
+        if(product is null)
+        {
+            ServiceResult<Product>.Fail("Product not found", HttpStatusCode.NotFound);
+        }
+
+        return ServiceResult<Product>.Success(product!);
     }
 }
