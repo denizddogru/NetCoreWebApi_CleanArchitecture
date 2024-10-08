@@ -45,8 +45,6 @@ public class ServiceResult
     public bool IsSuccess => ErrorMessage == null || ErrorMessage.Count == 0;
     public bool IsFail => !IsSuccess;
     public HttpStatusCode Status { get; set; }
-
-    //  Static Factory method ( design pattern, we have controlled the new creation mechanism )
     public static ServiceResult Success(HttpStatusCode status = HttpStatusCode.OK)
     {
         return new ServiceResult()
