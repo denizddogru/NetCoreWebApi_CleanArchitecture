@@ -1,5 +1,6 @@
 ﻿using App.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace App.API.Controllers;
 
@@ -10,9 +11,15 @@ public class CustomBaseController : ControllerBase
     [NonAction]
     public IActionResult CreateActionResult<T>(ServiceResult<T> result)
     {
-        if (result.Status == System.Net.HttpStatusCode.NoContent)
+        if (result.Status == HttpStatusCode.NoContent)
         {
+            // return NoContent();
             return new ObjectResult(null) { StatusCode = result.Status.GetHashCode() };
+        }
+
+        if(result.Status == HttpStatusCode.Created)
+        {
+            return Created(result.UrlAsCreated, result.Data);
         }
 
         return new ObjectResult(result) { StatusCode = result.Status.GetHashCode() };

@@ -16,6 +16,9 @@ public class ServiceResult<T>
     [JsonIgnore]
     public HttpStatusCode Status { get; set; }
 
+    [JsonIgnore]
+    public  string? UrlAsCreated { get; set; }
+
     //  Static Factory method ( design pattern, we have controlled the new creation mechanism )
     public static ServiceResult<T> Success(T data, HttpStatusCode status = HttpStatusCode.OK)
     {
@@ -23,6 +26,16 @@ public class ServiceResult<T>
         {
             Data = data,
             Status = status
+        };
+    }
+
+    public static ServiceResult<T> SuccessAsCreated(T data, string url)
+    {
+        return new ServiceResult<T>()
+        {
+            Data = data,
+            Status = HttpStatusCode.Created,
+            UrlAsCreated = url
         };
     }
     public static ServiceResult<T> Fail(List<string> errorMessage, HttpStatusCode status = HttpStatusCode.BadRequest)
@@ -57,14 +70,25 @@ public class ServiceResult
     public bool IsFail => !IsSuccess;
 
     [JsonIgnore]
-
     public HttpStatusCode Status { get; set; }
+
+    [JsonIgnore]
+    public string? UrlAsCreated { get; set; }
     public static ServiceResult Success(HttpStatusCode status = HttpStatusCode.OK)
     {
         return new ServiceResult()
         {
 
             Status = status
+        };
+    }
+    public static ServiceResult SuccessAsCreated(string url)
+    {
+        return new ServiceResult()
+        {
+            
+            Status = HttpStatusCode.Created,
+            UrlAsCreated = url
         };
     }
     public static ServiceResult Fail(List<string> errorMessage, HttpStatusCode status = HttpStatusCode.BadRequest)
