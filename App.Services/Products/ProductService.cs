@@ -83,7 +83,7 @@ public class ProductService(IProductRepository productRepository, IUnitOfWork un
         productRepository.Update(product);
         await unitOfWork.SaveChangesAsync();
 
-        return ServiceResult.Success();
+        return ServiceResult.Success(HttpStatusCode.NoContent);
     }
 
     public async Task<ServiceResult> DeleteProductAsync(int id)
@@ -97,7 +97,7 @@ public class ProductService(IProductRepository productRepository, IUnitOfWork un
 
         productRepository.Delete(product);
         await unitOfWork.SaveChangesAsync();
-        return ServiceResult.Success();
+        return ServiceResult.Success(HttpStatusCode.NoContent);
     }
 
 
