@@ -15,6 +15,9 @@ public class ProductsController(IProductService productService) : CustomBaseCont
         return CreateActionResult(await productService.GetAllList());
     }
 
+    [HttpGet("{pageNumber}/{pageSize}")]
+    public async Task<IActionResult> GetPagedAll(int pageNumber, int pageSize) => CreateActionResult(await productService.GetPagedAllListAsync(pageNumber, pageSize));
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProductById(int id) => CreateActionResult(await productService.GetProductByIdAsync(id));
 
