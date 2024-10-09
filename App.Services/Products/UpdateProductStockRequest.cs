@@ -1,2 +1,2 @@
 ﻿namespace App.Services.Products;
-public record UpdateProductStockRequest(int ProductId, string Quantity);
+public record UpdateProductStockRequest(int ProductId, int Quantity);
