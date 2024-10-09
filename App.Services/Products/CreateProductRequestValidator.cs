@@ -8,9 +8,8 @@ public class CreateProductRequestValidator : AbstractValidator<CreateProductRequ
 
         // NotNull validasyonu integer bir value için çalışmaz.
 
-        RuleFor(x => x.Name).NotNull().
-            WithMessage("Product name is required.").
-            NotEmpty().WithMessage("Product name is required.")
+        RuleFor(x => x.Name)
+            .NotEmpty().WithMessage("Product name is required.")
             .Length(3, 10).WithMessage("Product name must be between the length 3 and 10.");
 
         RuleFor(x => x.Price).GreaterThan(0).
