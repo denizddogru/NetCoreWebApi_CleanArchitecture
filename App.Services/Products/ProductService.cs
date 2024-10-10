@@ -68,7 +68,7 @@ public class ProductService(IProductRepository productRepository, IUnitOfWork un
 
         if(product is null)
         {
-            ServiceResult<ProductDto>.Fail("Product not found", HttpStatusCode.NotFound);
+           return ServiceResult<ProductDto>.Fail("Product not found", HttpStatusCode.NotFound);
         }
 
         var productsAsDto = mapper.Map<ProductDto>(product);
