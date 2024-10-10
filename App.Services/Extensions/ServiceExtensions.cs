@@ -1,4 +1,5 @@
-﻿using App.Services.Products;
+﻿using App.Services.ExceptionHandlers;
+using App.Services.Products;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,11 @@ public static class ServiceExtensions
 
         // Servis katmanındaki tüm referansları ekleyecek
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+        // Yeni kurduğumuz exception handlerları doğru sırada ekliyoruz.
+        services.AddExceptionHandler<CriticalExceptionHandler>();
+        services.AddExceptionHandler<GlobalExceptionHandler>();
+
         return services;
     }
 }

@@ -79,6 +79,8 @@ public class ProductService(IProductRepository productRepository, IUnitOfWork un
     public async Task<ServiceResult<CreateProductResponse>> CreateProductAsync(CreateProductRequest request)
     {
 
+        // throw new CriticalException => CriticalException Handler'ımıza takılır, 
+        // throw new Exception => Global Exception'a takılır
         var product = new Product()
         {
             Name = request.Name,
