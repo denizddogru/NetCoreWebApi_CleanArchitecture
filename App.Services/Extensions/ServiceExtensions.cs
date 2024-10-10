@@ -15,6 +15,9 @@ public static class ServiceExtensions
         services.AddFluentValidationAutoValidation();
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+        // Servis katmanındaki tüm referansları ekleyecek
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;
     }
 }
