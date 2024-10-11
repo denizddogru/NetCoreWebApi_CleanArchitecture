@@ -10,16 +10,17 @@ This project is an implementation of best practices in API development, followin
 The project evolves through various architectural stages, starting with N-Layer Architecture and progressing towards Clean Architecture. Each stage introduces new concepts and best practices in API development.
 
 ## Current Status
-**Current Focus: N-Layer Architecture**
+**Current Focus: Clean Architecture**
 
-We are currently implementing and exploring the N-Layer Architecture, which serves as a foundation for more advanced architectural patterns.
+We have implemented the N-Layer architecture and the new updates that follow through with .NET 8.
+Currently , we have created another branch for implementing Clean-Architecture and moving the project code from N-Layer to Clean branch.
 
 ## Project Roadmap
 
 1. **Introduction**
    - Basic setup and project initialization
 
-2. **N-Layer Architecture** *(Current Stage)*
+2. **N-Layer Architecture** 
    - Implementing separation of concerns
    - Defining clear boundaries between layers
 
@@ -49,6 +50,7 @@ We are currently implementing and exploring the N-Layer Architecture, which serv
 
 ## Learning Objectives
 - Understand and implement N-Layer and Clean Architecture
+- Understand the (hexagonal,onion,clean) architectures and how to convert from an N-Layer project to a Clean Architecture project
 - Apply best practices in API development using ASP.NET Core
 - Gain hands-on experience with various aspects of modern API development
 - Learn to integrate advanced features like caching and message queuing
@@ -63,5 +65,3 @@ This project is primarily for learning purposes. However, suggestions and discus
 Special thanks to Fatih Çakıroğlu for the comprehensive Udemy course that forms the basis of this learning project.
 
 
-
-*Note: This README will be updated as the project progresses through different stages of development.*
